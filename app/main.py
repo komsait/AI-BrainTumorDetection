@@ -59,6 +59,10 @@ async def startup_event():
     try:
         logger.info("Starting application initialization...")
         
+        # Configure TensorFlow for CPU-only execution
+        import os
+        os.environ['CUDA_VISIBLE_DEVICES'] = ''
+        
         # Load classifier model
         logger.info("Loading classifier model...")
         classifier_model = BrainTumorClassifier()
@@ -230,4 +234,8 @@ async def general_exception_handler(request: Request, exc: Exception):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    import os
+    
+    # Get port from environment variable (for Render deployment) or default to 8000
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)

@@ -8,6 +8,14 @@ import logging
 from typing import Tuple
 import os
 
+# Force CPU usage for deployment environments without GPU
+try:
+    tf.config.set_visible_devices([], 'GPU')
+    logger.info("Configured TensorFlow to use CPU only")
+except RuntimeError as e:
+    logger.warning(f"Could not configure GPU visibility: {e}")
+    # This is expected in some deployment environments
+
 logger = logging.getLogger(__name__)
 
 class BrainTumorClassifier:
