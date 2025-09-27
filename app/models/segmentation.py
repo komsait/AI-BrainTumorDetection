@@ -8,6 +8,8 @@ import logging
 from typing import Tuple
 import os
 
+logger = logging.getLogger(__name__)
+
 # Force CPU usage for deployment environments without GPU
 try:
     tf.config.set_visible_devices([], 'GPU')
@@ -15,8 +17,6 @@ try:
 except RuntimeError as e:
     logger.warning(f"Could not configure GPU visibility: {e}")
     # This is expected in some deployment environments
-
-logger = logging.getLogger(__name__)
 
 class BrainTumorSegmenter:
     """Brain tumor segmentation model wrapper."""
