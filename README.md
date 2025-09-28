@@ -4,7 +4,7 @@
 - can be viewed at: :https://www.tumorai.tahoonkhaled.com
 - NOTE: for faster and better experience go with the downloaded app.
 
-## 🧠 Features
+## Features
 
 - **Brain Tumor Classification**: Detects presence of tumors in MRI images
 - **Tumor Segmentation**: Creates precise masks of tumor regions when detected
@@ -20,7 +20,7 @@
 - Download Notebooks:https://drive.google.com/drive/folders/1G8kZCRk5CwmNAjCcPdneYt48Qc24UUu4?usp=sharing
 
 
-## 🏗️ Architecture
+## Architecture
 
 The application uses a two-stage pipeline:
 
@@ -37,7 +37,7 @@ The application uses a two-stage pipeline:
    - Overlays mask on original image
    - Returns JSON with prediction and base64-encoded overlay image
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ├── app/
@@ -60,7 +60,7 @@ The application uses a two-stage pipeline:
 └── README.md              # This file
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Using Docker (Recommended)
 
@@ -146,7 +146,7 @@ Health check endpoint.
 }
 ```
 
-## 🧪 Testing
+## Testing
 
 The application includes comprehensive tests:
 
@@ -166,7 +166,7 @@ Tests cover:
 - Overlay creation
 - API endpoints (if server is running)
 
-## 📊 Model Specifications
+## Model Specifications
 
 ### Classifier Model
 - **Input Shape**: (224, 224, 3)
@@ -179,7 +179,7 @@ Tests cover:
 - **Output Shape**: (128, 128, 1)
 - **Postprocessing**: Binary threshold at 0.5
 
-## 🔧 Configuration
+## Configuration
 
 ### Environment Variables
 - `PYTHONPATH`: Set to `/app` in container
@@ -192,7 +192,7 @@ The application uses structured JSON logging:
 - Includes prediction results, processing times, and errors
 - Compatible with log aggregation systems (ELK, Fluentd, etc.)
 
-## 🐳 Docker Details
+## Docker Details
 
 ### Multi-stage Build
 - **Builder stage**: Installs dependencies and builds packages
@@ -206,7 +206,7 @@ The application uses structured JSON logging:
 - **Timeout**: 120 seconds per request
 - **Port**: 8000
 
-## 🔒 Security Features
+## Security Features
 
 - Non-root user execution in container
 - Input validation for uploaded files
@@ -214,7 +214,7 @@ The application uses structured JSON logging:
 - Structured error handling
 - No temporary file storage
 
-## 📈 Performance
+## Performance
 
 - Models loaded once at startup (not per request)
 - Efficient image preprocessing
