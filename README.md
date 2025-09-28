@@ -14,8 +14,8 @@ A production-ready FastAPI web application for detecting and segmenting brain tu
 
 ## Resources
 - Download original classification dataset from Kaggle:https://www.kaggle.com/datasets/navoneel/brain-mri-images-for-brain-tumor-detection
-- [Download original segmentation dataset from Kaggle]((https://www.kaggle.com/datasets/mateuszbuda/lgg-mri-segmentation))
-- [Download Notebooks]([https://drive.google.com/file/d/FILE_ID/view?usp=sharing](https://drive.google.com/drive/folders/1G8kZCRk5CwmNAjCcPdneYt48Qc24UUu4?usp=sharing))
+- Download original segmentation dataset from Kaggle:https://www.kaggle.com/datasets/mateuszbuda/lgg-mri-segmentation
+- Download Notebooks:https://drive.google.com/drive/folders/1G8kZCRk5CwmNAjCcPdneYt48Qc24UUu4?usp=sharing
 
 
 ## 🏗️ Architecture
