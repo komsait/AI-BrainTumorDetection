@@ -1,6 +1,8 @@
 # Brain Tumor Detection API
 
 A production-ready FastAPI web application for detecting and segmenting brain tumors in MRI images using TensorFlow/Keras models.
+can be viewed at: tumorai.tahoonkhaled.com
+NOTE: for faster and better experience go with the downloaded app.
 
 ## 🧠 Features
 
