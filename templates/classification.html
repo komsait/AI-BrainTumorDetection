@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brain Tumor Detection</title>
+    <title>Brain Tumor Classification - AI Detection</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/static/brain.png?v=1">
     <link rel="icon" type="image/png" sizes="16x16" href="/static/brain.png?v=1">
     <link rel="shortcut icon" href="/static/brain.png?v=1">
@@ -43,23 +43,6 @@
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
         }
         
-        .page-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .main-container {
-            background: rgba(30, 30, 46, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            margin: 0 auto 3rem;
-            padding: 2rem;
-            width: 100%;
-            max-width: 1200px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
         .header {
             display: flex;
             justify-content: space-between;
@@ -67,6 +50,20 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
+        }
+        
+        .initials {
+            background: linear-gradient(45deg, #00D4FF, #0099CC);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: 0 3px 10px rgba(0, 212, 255, 0.3);
         }
         
         .nav-links {
@@ -95,66 +92,33 @@
             transform: translateY(-2px);
         }
         
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .page-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .main-container {
+            background: rgba(30, 30, 46, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            margin: 0 auto 3rem;
+            padding: 2rem;
             width: 100%;
-        }
-        
-        .initials {
-            background: linear-gradient(45deg, #00D4FF, #0099CC);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 16px;
-            box-shadow: 0 3px 10px rgba(0, 212, 255, 0.3);
-        }
-        
-        .portfolio-link {
-            color: #00D4FF;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-        }
-        
-        .portfolio-link:hover {
-            color: #00BFFF;
-            transform: translateX(2px);
-        }
-        
-        .header h1 {
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 24px;
-            margin-bottom: 0.5rem;
-        }
-        
-        .header p {
-            color: #B0BEC5;
-            font-size: 13px;
-            font-weight: 500;
+            max-width: 1200px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .upload-area {
             border: 3px dashed #00D4FF;
             border-radius: 20px;
-            padding: 2rem 1.5rem;
+            padding: 3rem 2rem;
             text-align: center;
             background: rgba(0, 212, 255, 0.1);
             transition: all 0.3s ease;
             cursor: pointer;
-            margin-bottom: 0;
-            height: 400px;
+            margin-bottom: 2rem;
+            height: 300px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -193,7 +157,6 @@
             transition: all 0.3s ease;
             margin-top: 1rem;
             margin-bottom: 1rem;
-            width: 70%;
             box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
         }
         
@@ -233,29 +196,21 @@
         .result-card {
             background: rgba(40, 40, 60, 0.9);
             border-radius: 15px;
-            padding: 1.5rem;
+            padding: 2rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             margin-bottom: 1.5rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .segmentation-card {
-            background: rgba(40, 40, 60, 0.9);
-            border-radius: 15px;
-            padding: 1.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            margin-bottom: 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
         .prediction-badge {
-            font-size: 1.2rem;
-            padding: 0.75rem 1.5rem;
+            font-size: 1.5rem;
+            padding: 1rem 2rem;
             border-radius: 25px;
             font-weight: 600;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            margin-bottom: 1.5rem;
         }
         
         .prediction-no-tumor {
@@ -273,14 +228,15 @@
         .confidence-container {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin: 1rem 0;
+            gap: 2rem;
+            margin: 2rem 0;
+            justify-content: center;
         }
         
         .confidence-circle {
             position: relative;
-            width: 80px;
-            height: 80px;
+            width: 120px;
+            height: 120px;
         }
         
         .confidence-circle svg {
@@ -291,7 +247,7 @@
         
         .confidence-circle circle {
             fill: none;
-            stroke-width: 6;
+            stroke-width: 8;
         }
         
         .confidence-circle .bg {
@@ -320,214 +276,38 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 18px;
+            font-size: 24px;
             font-weight: 700;
             color: #ffffff;
         }
         
         .confidence-info {
             flex: 1;
+            text-align: left;
         }
         
         .confidence-label {
-            font-size: 14px;
+            font-size: 18px;
             color: #B0BEC5;
-            margin-bottom: 0.25rem;
-        }
-        
-        .overlay-image {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            margin-top: 1rem;
-            transition: transform 0.3s ease;
-        }
-        
-        .overlay-image:hover {
-            transform: scale(1.02);
-        }
-        
-        .tumor-info {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 1rem;
-            border-left: 4px solid #dc3545;
-        }
-        
-        .alert-sm {
-            padding: 0.5rem 0.75rem;
-            font-size: 0.875rem;
-            border-radius: 8px;
-        }
-        
-        .row {
-            margin: 0;
-        }
-        
-        .col-md-6 {
-            padding: 0 0.5rem;
-        }
-        
-        .upload-area-small {
-            border: 2px dashed #3498db;
-            border-radius: 10px;
-            padding: 1.5rem;
-            text-align: center;
-            background: #f8f9fa;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .upload-area-small:hover {
-            border-color: #2980b9;
-            background: #e3f2fd;
-            transform: translateY(-2px);
-        }
-        
-        .upload-icon-small {
-            font-size: 2rem;
-            color: #3498db;
             margin-bottom: 0.5rem;
         }
         
-        .segmentation-content {
-            height: 350px;
-            display: flex;
-            flex-direction: row;
-            align-items: stretch;
-        }
-        
-        .segmentation-image-container {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-right: 1rem;
-        }
-        
-        .segmentation-image-container img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .segmentation-sidebar {
-            width: 250px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .segmentation-image {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-        }
-        
-        .segmentation-image:hover {
-            transform: scale(1.02);
-        }
-        
-        .upload-section {
-            margin-bottom: 2rem;
-        }
-        
-        .result-card {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .segmentation-preview {
-            position: relative;
-            z-index: 1;
-        }
-        
-        
-        .tumor-stats .stat-item {
-            background: rgba(50, 50, 70, 0.8);
-            border-radius: 10px;
-            padding: 1rem;
-            border-left: 4px solid #00D4FF;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .circular-progress {
-            position: relative;
-            width: 120px;
-            height: 120px;
-            margin: 0 auto;
-        }
-        
-        .circular-progress svg {
-            width: 100%;
-            height: 100%;
-            transform: rotate(-90deg);
-        }
-        
-        .circular-progress circle {
-            fill: none;
-            stroke-width: 8;
-        }
-        
-        .circular-progress .bg {
-            stroke: #E0E0E0;
-        }
-        
-        .circular-progress .progress {
-            stroke: #00B894;
-            stroke-linecap: round;
-            transition: stroke-dashoffset 0.5s ease;
-        }
-        
-        .circular-progress .percentage {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 24px;
-            font-weight: 700;
+        .confidence-description {
+            font-size: 16px;
             color: #ffffff;
-        }
-        
-        .circular-progress .label {
-            position: absolute;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 12px;
-            color: #B0BEC5;
-            text-align: center;
-            width: 100%;
-        }
-        
-        .tumor-stats {
-            text-align: center;
-        }
-        
-        .alert-success {
-            background: linear-gradient(45deg, #27ae60, #2ecc71);
-            color: white;
-            border: none;
-            border-radius: 10px;
+            line-height: 1.5;
         }
         
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
-            margin-top: 1rem;
+            margin-top: 2rem;
         }
         
         .stat-item {
             text-align: center;
-            padding: 1rem;
+            padding: 1.5rem;
             background: rgba(50, 50, 70, 0.8);
             border-radius: 10px;
             display: flex;
@@ -543,19 +323,20 @@
         }
         
         .stat-icon {
-            font-size: 1.5rem;
+            font-size: 2rem;
             margin-bottom: 0.5rem;
+            color: #00D4FF;
         }
         
         .stat-value {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: #ffffff;
         }
         
         .stat-label {
             color: #B0BEC5;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 500;
             text-align: center;
         }
@@ -636,62 +417,46 @@
             line-height: 1.4;
         }
         
-        .download-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
+        .classification-info {
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid #00D4FF;
         }
         
-        .download-btn {
-            background: linear-gradient(135deg, #00D4FF, #0099CC);
-            border: none;
-            border-radius: 25px;
-            padding: 0.75rem 1.5rem;
-            color: white;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+        .classification-info h6 {
+            color: #00D4FF;
+            margin-bottom: 0.5rem;
         }
         
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
-            background: linear-gradient(135deg, #00BFFF, #0088BB);
+        .classification-info p {
+            color: #B0BEC5;
+            margin: 0;
         }
         
-        .download-btn i {
-            font-size: 1rem;
+        .upload-section {
+            margin-bottom: 2rem;
         }
         
-        .download-stat-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            background: rgba(50, 50, 70, 0.8);
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.2s ease;
+        .row {
+            margin: 0;
         }
         
-        
+        .col-md-6 {
+            padding: 0 0.5rem;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Page Header (Full Width) -->
+        <!-- Page Header -->
         <div class="page-header">
             <div class="header">
                 <div class="initials">KT</div>
                 <div class="nav-links">
-                    <a href="/classification" class="nav-link">
-                        <i class="fas fa-brain"></i> Classification
+                    <a href="/" class="nav-link">
+                        <i class="fas fa-home"></i> Home
                     </a>
                     <a href="/segmentation" class="nav-link">
                         <i class="fas fa-cut"></i> Segmentation
@@ -703,47 +468,51 @@
             </div>
         </div>
         
-        <!-- Page Title (Outside Header) -->
+        <!-- Page Title -->
         <div class="page-title">
-            <h1><i class="fas fa-brain"></i> Brain Tumor Detection</h1>
-            <p>Upload an MRI image to detect and visualize brain tumors using AI</p>
+            <h1><i class="fas fa-brain"></i> Brain Tumor Classification</h1>
+            <p>Upload an MRI image to detect the presence of brain tumors using AI classification</p>
         </div>
         
-        <!-- Main Content Card -->
+        <!-- Main Content -->
         <div class="content-wrapper">
             <div class="main-container">
                 
+                <div class="classification-info">
+                    <h6><i class="fas fa-info-circle"></i> About Classification</h6>
+                    <p>This model analyzes MRI images to determine whether a brain tumor is present or not. It provides a confidence score indicating how certain the AI is about its prediction.</p>
+                </div>
+                
                 <div class="upload-section" id="uploadSection">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="upload-area" id="uploadArea">
-                            <div class="upload-icon">
-                                <i class="fas fa-cloud-upload-alt"></i>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="upload-area" id="uploadArea">
+                                <div class="upload-icon">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                </div>
+                                <h4>Drop your MRI image here</h4>
+                                <p class="text-muted">or click to browse files</p>
+                                <p class="small text-muted">Supported formats: JPG, JPEG, PNG, TIF</p>
+                                <input type="file" id="fileInput" class="file-input" accept="image/*">
+                                <button class="btn btn-upload" onclick="document.getElementById('fileInput').click()">
+                                    <i class="fas fa-upload"></i> Choose File
+                                </button>
                             </div>
-                            <h4>Drop your MRI image here</h4>
-                            <p class="text-muted">or click to browse files</p>
-                            <p class="small text-muted">Supported formats: JPG, JPEG, PNG, TIF</p>
-                            <input type="file" id="fileInput" class="file-input" accept="image/*">
-                            <button class="btn btn-upload" onclick="document.getElementById('fileInput').click()">
-                                <i class="fas fa-upload"></i> Choose File
-                            </button>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="segmentation-preview" id="segmentationPreview" style="display: none;">
-                            <!-- Segmentation results will be shown here -->
+                        <div class="col-md-6">
+                            <div class="segmentation-preview" id="segmentationPreview" style="display: none;">
+                                <!-- Classification results will be shown here -->
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            
-            <div class="loading" id="loading">
-                <div class="spinner"></div>
-                <h5>Analyzing your image...</h5>
-                <p class="text-muted">This may take a few moments</p>
-            </div>
-            
+                
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <h5>Classifying your image...</h5>
+                    <p class="text-muted">Analyzing for brain tumor presence</p>
+                </div>
+                
                 <div class="results" id="results">
                     <!-- Results will be populated here -->
                 </div>
@@ -755,8 +524,7 @@
             </div>
         </div>
         
-        
-        <!-- Page Footer (Outside Card) -->
+        <!-- Footer -->
         <div class="footer">
             <div class="footer-content">
                 <span class="footer-credits">Developed by Khaled Tahoon</span>
@@ -824,7 +592,7 @@
                 const formData = new FormData();
                 formData.append('file', file);
                 
-                const response = await fetch('/predict', {
+                const response = await fetch('/classify', {
                     method: 'POST',
                     body: formData
                 });
@@ -834,7 +602,7 @@
                 if (response.ok) {
                     showResults(data, file.name);
                 } else {
-                    showError(data.error || 'An error occurred during prediction.');
+                    showError(data.error || 'An error occurred during classification.');
                 }
                 
             } catch (error) {
@@ -872,24 +640,28 @@
             // Determine confidence level for color
             let confidenceLevel = 'high';
             let confidenceIcon = 'fa-check-circle';
+            let confidenceDescription = 'High confidence in this prediction.';
+            
             if (confidencePercent < 60) {
                 confidenceLevel = 'low';
                 confidenceIcon = 'fa-exclamation-triangle';
+                confidenceDescription = 'Low confidence. Consider consulting a medical professional.';
             } else if (confidencePercent < 80) {
                 confidenceLevel = 'medium';
                 confidenceIcon = 'fa-info-circle';
+                confidenceDescription = 'Medium confidence. Additional analysis may be beneficial.';
             }
             
             // Calculate circumference for circular progress
-            const radius = 35; // for 80px circle
+            const radius = 50; // for 120px circle
             const circumference = 2 * Math.PI * radius;
             const strokeDashoffset = circumference - (confidencePercent / 100) * circumference;
             
-            let resultsHtml = `
+            const resultsHtml = `
                 <div class="result-card">
-                    <h5><i class="fas fa-chart-line"></i> Prediction Results</h5>
+                    <h5><i class="fas fa-chart-line"></i> Classification Results</h5>
                     
-                    <div class="text-center mb-3">
+                    <div class="text-center mb-4">
                         <span class="prediction-badge ${predictionClass}">
                             <i class="fas ${isTumor ? 'fa-dna' : 'fa-check-circle'}"></i>
                             ${data.prediction}
@@ -899,8 +671,8 @@
                     <div class="confidence-container">
                         <div class="confidence-circle">
                             <svg>
-                                <circle class="bg" cx="40" cy="40" r="${radius}"></circle>
-                                <circle class="progress ${confidenceLevel}" cx="40" cy="40" r="${radius}" 
+                                <circle class="bg" cx="60" cy="60" r="${radius}"></circle>
+                                <circle class="progress ${confidenceLevel}" cx="60" cy="60" r="${radius}" 
                                         stroke-dasharray="${circumference}" 
                                         stroke-dashoffset="${strokeDashoffset}"></circle>
                             </svg>
@@ -908,9 +680,9 @@
                         </div>
                         <div class="confidence-info">
                             <div class="confidence-label">Confidence Score</div>
-                            <div style="font-size: 14px; color: #ffffff;">
+                            <div class="confidence-description">
                                 <i class="fas ${confidenceIcon}"></i> 
-                                ${confidenceLevel.charAt(0).toUpperCase() + confidenceLevel.slice(1)} confidence level
+                                ${confidenceDescription}
                             </div>
                         </div>
                     </div>
@@ -921,125 +693,50 @@
                             <div class="stat-value">${filename.split('.')[0]}</div>
                             <div class="stat-label">File Name</div>
                         </div>
-            `;
-            
-            if (data.processing_times) {
-                resultsHtml += `
                         <div class="stat-item">
                             <i class="fas fa-bolt stat-icon"></i>
-                            <div class="stat-value">${data.processing_times.classifier_ms}ms</div>
-                            <div class="stat-label">Classification</div>
+                            <div class="stat-value">${data.processing_times?.classifier_ms || 'N/A'}ms</div>
+                            <div class="stat-label">Processing Time</div>
                         </div>
-                `;
-                
-                if (data.processing_times.segmentation_ms) {
-                    resultsHtml += `
-                            <div class="stat-item">
-                                <i class="fas fa-stopwatch stat-icon"></i>
-                                <div class="stat-value">${data.processing_times.segmentation_ms}ms</div>
-                                <div class="stat-label">Segmentation</div>
-                            </div>
-                    `;
-                }
-            }
+                    </div>
+                </div>
+            `;
             
-            // Add download button if tumor detected and segmentation available
-            if (isTumor && data.overlay_image) {
-                resultsHtml += `
-                        <div class="stat-item download-stat-item">
-                            <div class="download-section">
-                                <button class="download-btn" onclick="downloadSegmentationImage('${data.overlay_image}', '${data.filename || 'tumor_segmentation'}')">
-                                    <i class="fas fa-download"></i> Download Segmentation
-                                </button>
-                            </div>
-                        </div>
-                `;
-            }
-            
-            resultsHtml += `</div></div>`;
-            
-            // Set main results
             results.innerHTML = resultsHtml;
             results.style.display = 'block';
             
-            // Handle segmentation results in the preview area next to upload
-            if (isTumor && data.overlay_image) {
-                showSegmentationPreview(data);
-            } else if (!isTumor) {
-                showNoTumorPreview();
-            }
+            // Show classification preview in the right column
+            showClassificationPreview(data, isTumor);
         }
         
-        function showSegmentationPreview(data) {
+        function showClassificationPreview(data, isTumor) {
             const previewHtml = `
-                <div class="segmentation-card" style="height: 400px; display: flex; flex-direction: column;">
-                    <div style="margin-bottom: 1rem;">
-                        <h5><i class="fas fa-eye"></i> Tumor Segmentation</h5>
-                        <p class="text-muted mb-0">Red overlay shows detected tumor regions</p>
+                <div class="result-card" style="height: 400px; display: flex; flex-direction: column; justify-content: center;">
+                    <h5><i class="fas fa-brain text-primary"></i> Classification Result</h5>
+                    <div class="text-center mb-3">
+                        <span class="prediction-badge ${isTumor ? 'prediction-tumor' : 'prediction-no-tumor'}">
+                            <i class="fas ${isTumor ? 'fa-dna' : 'fa-check-circle'}"></i>
+                            ${data.prediction}
+                        </span>
                     </div>
-                    
-                    <div class="segmentation-content">
-                        <div class="segmentation-image-container">
-                            <img src="${data.overlay_image}" alt="Tumor Segmentation Overlay" class="segmentation-image">
+                    <div class="text-center">
+                        <div class="confidence-circle" style="width: 100px; height: 100px; margin: 0 auto;">
+                            <svg>
+                                <circle class="bg" cx="50" cy="50" r="40"></circle>
+                                <circle class="progress ${data.confidence >= 0.8 ? 'high' : data.confidence >= 0.6 ? 'medium' : 'low'}" 
+                                        cx="50" cy="50" r="40" 
+                                        stroke-dasharray="${2 * Math.PI * 40}" 
+                                        stroke-dashoffset="${2 * Math.PI * 40 * (1 - data.confidence)}"></circle>
+                            </svg>
+                            <div class="percentage" style="font-size: 16px;">${Math.round(data.confidence * 100)}%</div>
                         </div>
-                        
-                        <div class="segmentation-sidebar">
-                            <div class="tumor-stats">
-                                ${data.tumor_area_ratio ? `
-                                    <div class="circular-progress">
-                                        <svg>
-                                            <circle class="bg" cx="60" cy="60" r="50"></circle>
-                                            <circle class="progress" cx="60" cy="60" r="50" 
-                                                    stroke-dasharray="${2 * Math.PI * 50}" 
-                                                    stroke-dashoffset="${2 * Math.PI * 50 * (1 - data.tumor_area_ratio)}"></circle>
-                                        </svg>
-                                        <div class="percentage">${Math.round(data.tumor_area_ratio * 100)}%</div>
-                                        <div class="label">Tumor Area Coverage</div>
-                                    </div>
-                                ` : ''}
-                            </div>
-                        </div>
+                        <p class="text-muted mt-2">Confidence Score</p>
                     </div>
                 </div>
             `;
             
             segmentationPreview.innerHTML = previewHtml;
             segmentationPreview.style.display = 'block';
-        }
-        
-        function showNoTumorPreview() {
-            const noTumorHtml = `
-                <div class="result-card" style="height: 400px; display: flex; flex-direction: column; justify-content: center;">
-                    <h5><i class="fas fa-check-circle text-success"></i> No Tumor Detected</h5>
-                    <p class="text-muted">The AI model did not detect any brain tumor in the uploaded image.</p>
-                    <div class="alert alert-success">
-                        <i class="fas fa-check-circle"></i>
-                        <strong>Good News:</strong> No tumor regions were detected in this MRI scan.
-                    </div>
-                </div>
-            `;
-            
-            segmentationPreview.innerHTML = noTumorHtml;
-            segmentationPreview.style.display = 'block';
-        }
-        
-        function downloadSegmentationImage(base64Data, filename) {
-            try {
-                // Create a temporary anchor element
-                const link = document.createElement('a');
-                link.href = base64Data;
-                link.download = `${filename}_segmentation.png`;
-                
-                // Trigger download
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                
-                console.log('Download initiated for:', filename);
-            } catch (error) {
-                console.error('Download failed:', error);
-                alert('Download failed. Please try again.');
-            }
         }
         
         function showError(message) {
@@ -1059,7 +756,7 @@
         
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('Brain Tumor Detection App initialized');
+            console.log('Brain Tumor Classification Page initialized');
         });
     </script>
 </body>
