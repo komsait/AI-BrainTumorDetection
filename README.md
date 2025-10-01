@@ -1,8 +1,9 @@
 # Brain Tumor Detection API
 
-A production-ready FastAPI web application for detecting and segmenting brain tumors in MRI images using TensorFlow/Keras models.
+- A production-ready FastAPI web application for detecting and segmenting brain tumors in MRI images using TensorFlow/Keras models.
+- can be viewed at: :https://aitumor.tahoonkhaled.com
 
-## 🧠 Features
+## Features
 
 - **Brain Tumor Classification**: Detects presence of tumors in MRI images
 - **Tumor Segmentation**: Creates precise masks of tumor regions when detected
@@ -11,7 +12,14 @@ A production-ready FastAPI web application for detecting and segmenting brain tu
 - **Real-time Visualization**: Overlay tumor masks on original images
 - **Production Ready**: Dockerized with structured logging and error handling
 
-## 🏗️ Architecture
+
+## Resources
+- Download original classification dataset from Kaggle:https://www.kaggle.com/datasets/navoneel/brain-mri-images-for-brain-tumor-detection
+- Download original segmentation dataset from Kaggle:https://www.kaggle.com/datasets/mateuszbuda/lgg-mri-segmentation
+- Download Notebooks:https://drive.google.com/drive/folders/1G8kZCRk5CwmNAjCcPdneYt48Qc24UUu4?usp=sharing
+
+
+## Architecture
 
 The application uses a two-stage pipeline:
 
@@ -28,7 +36,7 @@ The application uses a two-stage pipeline:
    - Overlays mask on original image
    - Returns JSON with prediction and base64-encoded overlay image
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ├── app/
@@ -51,7 +59,7 @@ The application uses a two-stage pipeline:
 └── README.md              # This file
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Using Docker (Recommended)
 
@@ -137,7 +145,7 @@ Health check endpoint.
 }
 ```
 
-## 🧪 Testing
+## Testing
 
 The application includes comprehensive tests:
 
@@ -157,7 +165,7 @@ Tests cover:
 - Overlay creation
 - API endpoints (if server is running)
 
-## 📊 Model Specifications
+## Model Specifications
 
 ### Classifier Model
 - **Input Shape**: (224, 224, 3)
@@ -170,7 +178,7 @@ Tests cover:
 - **Output Shape**: (128, 128, 1)
 - **Postprocessing**: Binary threshold at 0.5
 
-## 🔧 Configuration
+## Configuration
 
 ### Environment Variables
 - `PYTHONPATH`: Set to `/app` in container
@@ -183,7 +191,7 @@ The application uses structured JSON logging:
 - Includes prediction results, processing times, and errors
 - Compatible with log aggregation systems (ELK, Fluentd, etc.)
 
-## 🐳 Docker Details
+## Docker Details
 
 ### Multi-stage Build
 - **Builder stage**: Installs dependencies and builds packages
@@ -197,7 +205,7 @@ The application uses structured JSON logging:
 - **Timeout**: 120 seconds per request
 - **Port**: 8000
 
-## 🔒 Security Features
+## Security Features
 
 - Non-root user execution in container
 - Input validation for uploaded files
@@ -205,50 +213,10 @@ The application uses structured JSON logging:
 - Structured error handling
 - No temporary file storage
 
-## 📈 Performance
+## Performance
 
 - Models loaded once at startup (not per request)
 - Efficient image preprocessing
 - Base64 encoding for inline image delivery
 - Optimized Docker image size
 - Connection pooling and keep-alive
-
-## 🚨 Error Handling
-
-The application handles various error scenarios:
-- Invalid file formats
-- Corrupted images
-- Model loading failures
-- Inference errors
-- Network timeouts
-
-All errors are logged with structured JSON format for monitoring and debugging.
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests for new functionality
-5. Run the test suite
-6. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🆘 Support
-
-For issues and questions:
-1. Check the logs for detailed error messages
-2. Run the test suite to verify setup
-3. Ensure model files are in the correct location
-4. Verify Docker container health with `/health` endpoint
-
-## 🔄 Updates
-
-To update the application:
-1. Pull the latest changes
-2. Rebuild the Docker image
-3. Restart the container
-4. Run tests to verify functionality
