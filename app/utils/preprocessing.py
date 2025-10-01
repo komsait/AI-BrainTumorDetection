@@ -24,7 +24,7 @@ def validate_image_file(file_content: bytes, filename: str) -> bool:
     """
     try:
         # Check file extension
-        valid_extensions = {'.jpg', '.jpeg', '.png'}
+        valid_extensions = {'.jpg', '.jpeg', '.png', '.tif', '.tiff'}
         file_ext = filename.lower().split('.')[-1]
         if f'.{file_ext}' not in valid_extensions:
             logger.warning(f"Invalid file extension: {file_ext}")

@@ -20,7 +20,7 @@ The application uses a two-stage pipeline:
 
 ### Workflow
 
-1. User uploads an MRI image (JPG, PNG, JPEG)
+1. User uploads an MRI image (JPG, PNG, JPEG, TIF)
 2. Classifier determines tumor presence
 3. If **no tumor**: Returns `{"prediction": "No Tumor"}`
 4. If **tumor detected**: 
@@ -201,7 +201,7 @@ The application uses structured JSON logging:
 
 - Non-root user execution in container
 - Input validation for uploaded files
-- File type restrictions (JPG, PNG, JPEG only)
+- File type restrictions (JPG, PNG, JPEG, TIF only)
 - Structured error handling
 - No temporary file storage
 

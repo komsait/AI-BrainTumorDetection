@@ -110,7 +110,7 @@ async def predict_tumor(file: UploadFile = File(...)):
         if not validate_image_file(file_content, file.filename):
             raise HTTPException(
                 status_code=400, 
-                detail="Invalid image file. Please upload a JPG, JPEG, or PNG file."
+                detail="Invalid image file. Please upload a JPG, JPEG, PNG, or TIF file."
             )
         
         # Load and preprocess image
